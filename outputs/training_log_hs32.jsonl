@@ -1,0 +1,2 @@
+{"seed_offset": 0, "n_train": 20, "n_epochs": 2, "hidden_size": 32, "loss_type": "mse", "final_train_loss": 76586.475, "val_loss": 83045.0287109375}
+{"seed_offset": 20, "n_train": 20, "n_epochs": 2, "hidden_size": 32, "loss_type": "mse", "final_train_loss": 79427.76875, "val_loss": 83288.65631510416}
