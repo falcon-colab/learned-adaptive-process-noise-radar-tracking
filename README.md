@@ -344,3 +344,20 @@ file, and the single-run `normalize_innovation` ablation's results/checkpoint
 Every file that any paper table, figure, or number in Section 6/7 depends on
 is included and was independently re-verified against the paper before this
 repository was created.
+
+---
+
+## Camera-ready addition: Sage–Husa online adaptive-Q baseline
+
+Added in response to peer review of the ICCI 2026 submission, which asked for a
+classical *adaptive* process-noise baseline (not just the fixed-Q and discrete-mode-switching
+ones already in the paper). `sage_husa_kf.py` implements the classical Sage–Husa recursive
+process-noise estimator (Sage & Husa, 1969), which re-estimates Q scan-by-scan from the
+innovation sequence using a forgetting factor `b` -- no training, no discrete mode bank.
+
+`evaluate_sage_husa.py` selects `b` by the same grid-search methodology already used for
+IMM's `q_high` in `select_q_high.py` (minimizing combined mild_turn/sharp_turn RMSE over 40
+trials; selected `b = 0.5`), then evaluates the selected filter over the same 300-run,
+fixed-scenario protocol used for every other baseline in the paper, using identical seeds.
+Results: `outputs/sage_husa_results_300.pkl`, `outputs/sage_husa_b_selection.json`. Reported
+in the paper's Results section alongside the naive-high-Q baseline.
